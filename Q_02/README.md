@@ -11,4 +11,9 @@
 두 가지 문제가 발생한 원인과 해결 방법을 모두 서술하시오.
 
 ## 답안
-- 
+- 유니티 에디터에서 Run 실행 시 윈도우에서는 Stack Overflow가 발생하고, MacOS의 유니티에서는 에디터가 강제종료되는 문제
+  - PlayerStatus의 MoveSpeed 변수 프로퍼티에서 private set임에도 불구하고 MoveSpeed에 Value를 대입하려는 코드 발견
+  - Value 대입 코드 삭제로 문제 해결
+- 플레이어 캐릭터가 X, Z축의 입력을 동시입력 받아서 대각선으로 이동 시 하나의 축 기준으로 움직일 때 보다 약 1.414배 빠른 문제
+  - 이동 방향의 일반화(Normalization)가 진행되지 않은 문제 발견
+  - Translate 코드에서 direction을 direction.normalized로 변경하여 일반화 진행으로 해결
