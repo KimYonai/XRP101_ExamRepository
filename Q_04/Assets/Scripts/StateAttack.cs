@@ -22,17 +22,18 @@ public class StateAttack : PlayerState
 
     public override void Enter()
     {
-        Controller.StartCoroutine(DelayRoutine(Attack));
+        Controller.StartCoroutine(DelayRoutine());
     }
 
     public override void OnUpdate()
     {
         Debug.Log("Attack On Update");
+        Machine.ChangeState(StateType.Idle);
     }
 
     public override void Exit()
     {
-        Machine.ChangeState(StateType.Idle);
+        
     }
 
     private void Attack()
@@ -45,17 +46,20 @@ public class StateAttack : PlayerState
         IDamagable damagable;
         foreach (Collider col in cols)
         {
+
             damagable = col.GetComponent<IDamagable>();
+
+            if (damagable == null) return;
+
             damagable.TakeHit(Controller.AttackValue);
         }
     }
 
-    public IEnumerator DelayRoutine(Action action)
+    public IEnumerator DelayRoutine()
     {
         yield return _wait;
 
         Attack();
-        Exit();
     }
 
 }
