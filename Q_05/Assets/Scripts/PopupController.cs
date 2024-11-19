@@ -30,19 +30,21 @@ public class PopupController : MonoBehaviour
 
     private void Activate()
     {
-        _popup.gameObject.SetActive(true);
-        GameManager.Intance.Pause();
         StartCoroutine(DeactivateRoutine());
+        _popup.gameObject.SetActive(true);
+        
+        GameManager.Instance.Pause();
     }
 
     private void Deactivate()
     {
+        GameManager.Instance.Resume();
         _popup.gameObject.SetActive(false);
     }
 
-    private IEnumerator DeactivateRoutine()
-    {
-        yield return _wait;
+    private IEnumerator DeactivateRoutine()     // 해당 코루틴을 다시 작동시키는 부분에서 진행이 막혔습니다.
+    {                                           // bool 변수를 여럿 추가하고 bool 변수의 값이 변할때마다 체크하게 하려는 시도도 해봤지만
+        yield return _wait;                     // 제대로 동작하지 않아 막혔습니다.    
         Deactivate();
     }
 }

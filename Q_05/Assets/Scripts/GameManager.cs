@@ -18,6 +18,11 @@ public class GameManager : SingletonBehaviour<GameManager>
         Time.timeScale = 0f;
     }
 
+    public void Resume()        // 일시정지 이후 다시 원래의 시간 속도로 복귀시키기 위한 함수
+    {
+        Time.timeScale = 1f;
+    }
+
     public void LoadScene(int buildIndex)
     {
         Debug.Log("ddddddddd");
