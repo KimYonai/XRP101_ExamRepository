@@ -9,29 +9,23 @@ public class CubeManager : MonoBehaviour
     private CubeController _cubeController;
     private Vector3 _cubeSetPoint;
 
-    private void Awake()
-    {
-        
-    }
-
     private void Start()
     {
-        CreateCube();
-        SetCubePosition(3, 0, 3);
+        CreateCube();           // 큐브 프리팹 생성 함수
+        SetCubePosition();      // 큐브 프리팹 위치 설정 함수
     }
 
-    private void SetCubePosition(float x, float y, float z)
+    // 큐브 프리팹 위치 설정 함수
+    private void SetCubePosition()
     {
-       // _cubeSetPoint.x = _cubeController.SetPoint.x;
-       // _cubeSetPoint.y = _cubeController.SetPoint.y;
-       // _cubeSetPoint.z = _cubeController.SetPoint.z;
-        _cubeController.SetPosition();
+        _cubeController = _cubePrefab.GetComponent<CubeController>();   // 큐브 프리팹의 CubeController 컴포넌트 참조
+        _cubeSetPoint = _cubeController.SetPoint;                       // CubeController의 SetPoint를 큐브 프리팹 위치로 설정
+        _cubeController.SetPosition();                                  // CubeController의 SetPosition 함수 실행
     }
 
+    // 큐브 프리팹 생성 함수
     private void CreateCube()
     {
-        GameObject cube = Instantiate(_cubePrefab);
-        _cubeController = cube.GetComponent<CubeController>();
-        _cubeSetPoint = _cubeController.SetPoint;
+        GameObject cube = Instantiate(_cubePrefab);     // 큐브 프리팹 생성
     }
 }
