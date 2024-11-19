@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class CubeController : MonoBehaviour
@@ -8,6 +9,7 @@ public class CubeController : MonoBehaviour
 
     public void SetPosition()
     {
+        
         transform.position = SetPoint;
     }
 }
