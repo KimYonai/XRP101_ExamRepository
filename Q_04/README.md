@@ -18,4 +18,8 @@
 제시된 프로젝트에서 발생하는 `문제들을 모두 서술`하고 올바르게 동작하도록 `소스코드를 개선`하시오.
 
 ## 답안
-- 
+- - 플레이어의 상태가 Attack 상태 이후 Idle 상태로 변경되어야 하지만, 상태가 변경되지 않는 문제 발생
+  - StateAttack 스크립트에서 ChangeState(StateType.Idle)을 Exit가 아닌 OnUpdate에서 처리하는 것으로 해결
+- Attack 진행 후 damagable 오브젝트를 참조할 수 없다는 오류 로그 발생
+  - damagable 오브젝트가 파괴되고 남아있지 않아 공격 대상을 찾을 수 없어 발생한 오류로 예상
+  - damagable이 없는 경우(== null인 경우) 예외 처리 코드 추가로 오류 해결
