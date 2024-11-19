@@ -12,4 +12,8 @@
 제시된 소스코드에서 문제가 발생하는 `원인을 모두 서술`하시오.
 
 ## 답안
-- 
+- CubeManager의 소스코드에서 CreateCube(큐브 프리팹 생성 함수)가 먼저 진행되지 않은 채로 SetCubePosition(큐브 프리팹 위치 함수)를 실행하여 큐브 프리팹이 생성되지 않는 문제 
+  - SetCubePosition를 CreateCube 아래에 위치시켜 큐브 프리팹이 생성되게 문제 해결
+- 큐브 프리팹이 (0, 0, 0) 좌표에 생성되는 문제 발생
+  - CubeController의 SetPosition에서 SetPoint를 (3, 0, 3)으로 새로 할당
+  - CubeManager의 SetCubePosition에서 CubeController를 참조하여 큐브 프리팹의 위치를 (3, 0, 3)으로 지정하는 것으로 문제 해결
