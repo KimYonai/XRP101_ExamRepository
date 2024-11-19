@@ -12,11 +12,11 @@ public class PlayerStatus : MonoBehaviour
 
     private void Awake()
     {
-        Init();
+        Init();     // 초기화 함수 진행
     }
 
     private void Init()
     {
-        MoveSpeed = 5f;
+        MoveSpeed = 5f;     // 이동 속도를 5로 설정
     }
 }
