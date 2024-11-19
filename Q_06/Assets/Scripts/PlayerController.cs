@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if (input.x != 0)
         {
-            transform.Rotate(Vector3.up, input.x * _rotateSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, input.x * _rotateSpeed * Time.deltaTime, Space.World);
         }
         
         if (input.y != 0)
